@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Picture Diary</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📹 Video Picture Diary</h1>
+            <p>Capture your memories with videos</p>
+        </header>
+        
+        <main>
+            <!-- Camera Section -->
+            <section id="camera-section" class="section">
+                <h2>Record a Video</h2>
+                <div class="camera-container">
+                    <video id="camera-preview" autoplay muted playsinline></video>
+                    <video id="recorded-preview" controls style="display: none;"></video>
+                </div>
+                
+                <div class="camera-controls">
+                    <button id="start-camera" class="btn btn-primary">Start Camera</button>
+                    <button id="start-recording" class="btn btn-record" disabled>Start Recording</button>
+                    <button id="stop-recording" class="btn btn-stop" disabled>Stop Recording</button>
+                    <button id="save-video" class="btn btn-success" style="display: none;">Save Video</button>
+                    <button id="discard-video" class="btn btn-secondary" style="display: none;">Discard</button>
+                </div>
+                
+                <div id="recording-status" class="status-indicator"></div>
+            </section>
+            
+            <!-- Upload Form Section -->
+            <section id="upload-section" class="section" style="display: none;">
+                <h2>Add Video Details</h2>
+                <form id="video-form">
+                    <div class="form-group">
+                        <label for="video-title">Title *</label>
+                        <input type="text" id="video-title" name="title" required maxlength="255">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="video-description">Description</label>
+                        <textarea id="video-description" name="description" maxlength="1000" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Upload Video</button>
+                        <button type="button" id="cancel-upload" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Video Gallery Section -->
+            <section id="gallery-section" class="section">
+                <div class="gallery-header">
+                    <h2>Your Video Diary</h2>
+                    <div class="gallery-controls">
+                        <input type="text" id="search-input" placeholder="Search videos...">
+                        <button id="search-btn" class="btn btn-small">Search</button>
+                        <button id="refresh-gallery" class="btn btn-small">Refresh</button>
+                    </div>
+                </div>
+                
+                <div id="video-gallery" class="video-grid">
+                    <!-- Videos will be loaded here -->
+                </div>
+                
+                <div id="loading" class="loading" style="display: none;">Loading videos...</div>
+                <div id="no-videos" class="no-content" style="display: none;">
+                    <p>No videos found. Start by recording your first video!</p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Modal for video playback -->
+        <div id="video-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title"></h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <video id="modal-video" controls></video>
+                    <p id="modal-description"></p>
+                    <p class="video-meta">
+                        <small>Created: <span id="modal-date"></span></small>
+                    </p>
+                </div>
+                <div class="modal-actions">
+                    <button id="edit-video" class="btn btn-primary">Edit</button>
+                    <button id="delete-video" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/app.js"></script>
+</body>
+</html>
