@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import VideoForm from './components/VideoForm'
 
 function App() {
   const [message, setMessage] = useState('')
@@ -19,46 +20,11 @@ function App() {
       })
   }, [])
 
-  const VideoForm = () => {
-    const [title, setTitle] = useState('')
-    const [url, setUrl] = useState('')
-
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      axios.post('http://localhost:8080/api/videos', { title, url })
-        .then(response => {
-          setVideos([...videos, response.data])
-          setTitle('')
-          setUrl('')
-        })
-    }
-
-    return (
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="URL"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          required
-        />
-        <button type="submit">Add Video</button>
-      </form>
-    )
-  }
-
   return (
     <div className="App">
       <h1>VPD Frontend</h1>
       <p>Backend says: {message}</p>
-      <VideoForm />
+      <VideoForm videos={videos} setVideos={setVideos} />
       <h2>Videos</h2>
       <ul>
         {videos.map(video => (

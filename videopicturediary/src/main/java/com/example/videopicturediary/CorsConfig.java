@@ -1,4 +1,4 @@
-package com.videopicturediary;
+package com.example.videopicturediary;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
