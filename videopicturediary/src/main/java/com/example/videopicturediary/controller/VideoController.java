@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @RestController
-@RequestMapping("/videos")
+@RequestMapping("/api")
 public class VideoController {
 
     @Autowired
     private VideoService videoService;
 
-    @GetMapping
+    @GetMapping("/videos")
     public List<Video> getAllVideos() {
         return videoService.getAllVideos();
     }
