@@ -23,4 +23,9 @@ public class VideoService {
         videos.add(video2);
         return videos;
     }
+
+    public Video createVideo(Video video) {
+        video.setId((long) (Math.random() * 1000)); // Simulate ID assignment
+        return video;
+    }
 }
