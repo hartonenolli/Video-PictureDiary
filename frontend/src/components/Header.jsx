@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography } from "@mui/material"
+import { AppBar, Toolbar, Typography } from "../../node_modules/@mui/material"
 
 export const Header = () => {
     return (

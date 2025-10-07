@@ -5,7 +5,7 @@ import {
   TableContainer,
   TableRow,
   Paper
-} from '@mui/material'
+} from '../../node_modules/@mui/material'
 
 export const VideoDiaryContainer = ({ videos }) => {
     return (

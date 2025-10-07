@@ -5,7 +5,7 @@ import { RecordVideoContainer } from './components/RecordVideoContainer'
 import { VideoDiaryContainer } from './components/VideoDiaryContainer'
 import {
   Container
-} from '@mui/material'
+} from '../node_modules/@mui/material'
 
 function App() {
   const [videos, setVideos] = useState([])

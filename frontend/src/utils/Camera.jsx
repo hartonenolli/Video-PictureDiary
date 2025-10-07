@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
-import { Button, Box, Typography } from '@mui/material';
+import Timer from '../components/Timer';
+import { Button, Box, Typography } from '../../node_modules/@mui/material';
 
 const Camera = () => {
     const videoRef = useRef(null);
@@ -45,18 +46,20 @@ const Camera = () => {
                 onClick={startCameraAndRecord} 
                 disabled={recording}
             >
-                {recording ? 'Recording...' : 'Open Camera & Record 10s'}
+                {recording ? <Timer /> : <Typography >Open Camera & Record 10s</Typography>}
             </Button>
             <Box>
                 {recording ? (
-                    <video 
-                        ref={videoRef} 
-                        width={320} 
-                        height={240} 
-                        autoPlay 
-                        muted 
-                        style={{ display: 'block' }} 
-                    />
+                    <>
+                        <video 
+                            ref={videoRef} 
+                            width={320} 
+                            height={240} 
+                            autoPlay 
+                            muted 
+                            style={{ display: 'block' }} 
+                        />
+                    </>
                 ) : (
                     <Box 
                         width={320} 

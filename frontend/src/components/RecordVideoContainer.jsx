@@ -1,6 +1,6 @@
 import VideoForm from "./VideoForm"
 import Camera from "../utils/Camera"
-import { AppBar, Typography, Card } from "@mui/material"
+import { AppBar, Typography, Card } from "../../node_modules/@mui/material"
 
 export const RecordVideoContainer = ({ videos, setVideos }) => {
     return (
