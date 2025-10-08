@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
 
 const Timer = () => {
     const [count, setCount] = useState(10);
@@ -13,7 +12,7 @@ const Timer = () => {
     }, [count]);
 
     return (
-            <Typography variant="h4" color="black">Recording: {count}</Typography>
+        <div>Recording: {count}</div>
     );
 };
 
