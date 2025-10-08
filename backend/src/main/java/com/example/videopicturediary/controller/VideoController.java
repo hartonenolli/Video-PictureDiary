@@ -16,6 +16,11 @@ public class VideoController {
     @Autowired
     private VideoService videoService;
 
+    @Autowired
+    public VideoController(VideoService videoService) {
+        this.videoService = videoService;
+    }
+
     @GetMapping("/videos")
     public List<Video> getAllVideos() {
         return videoService.getAllVideos();

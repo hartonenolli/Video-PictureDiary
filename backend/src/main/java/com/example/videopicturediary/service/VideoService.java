@@ -3,13 +3,26 @@ import com.example.videopicturediary.model.Video;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import com.example.videopicturediary.repository.VideoRepository;
 
 import java.util.ArrayList;
 
 @Service
 public class VideoService {
+    private final VideoRepository videoRepository;
+
+    public VideoService(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
+    }
     public List<Video> getAllVideos() {
-        // Placeholder implementation
+        return videoRepository.findAll();
+    }
+
+    public Video createVideo(Video video) {
+        return videoRepository.save(video);
+    }
+    // Mock implementations for demonstration purposes
+    public List<Video> getAllVideos_Mock() {
         List<Video> videos = new ArrayList<>();
         Video video1 = new Video();
         video1.setId(1L);
@@ -22,10 +35,5 @@ public class VideoService {
         videos.add(video1);
         videos.add(video2);
         return videos;
-    }
-
-    public Video createVideo(Video video) {
-        video.setId((long) (Math.random() * 1000)); // Simulate ID assignment
-        return video;
     }
 }
