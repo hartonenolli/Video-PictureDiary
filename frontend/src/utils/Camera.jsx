@@ -31,7 +31,7 @@ const Camera = () => {
             mediaRecorderRef.current.start();
             setTimeout(() => {
                 mediaRecorderRef.current.stop();
-            }, 10000); // 10 seconds
+            }, 1000); // 1 second in production, change to 10000 for 10 seconds
         } catch (err) {
             alert('Camera access denied or not available.');
             setRecording(false);
@@ -81,14 +81,14 @@ const Camera = () => {
                         <video src={videoUrl} controls width={320} height={240} />
                     </Box>
                     <Box mt={2}>
-                        <Button 
+                        {/* <Button 
                             variant="contained" 
                             sx={{ bgcolor: 'gold', color: 'black', '&:hover': { bgcolor: '#FFD700' }, mt: 2 }}
-                            // href={videoUrl} 
-                            // download="recorded_video.webm"
+                            href={videoUrl} 
+                            download="recorded_video.webm"
                         >
                             Download Video
-                        </Button>
+                        </Button> */}
                     </Box>
                 </Box>
             )}

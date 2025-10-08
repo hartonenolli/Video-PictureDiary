@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { TextField, Button } from '../../node_modules/@mui/material'
 import axios from 'axios'
 
 const VideoForm = ({ videos, setVideos }) => {
@@ -7,7 +8,9 @@ const VideoForm = ({ videos, setVideos }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8080/api/videos', { title, url })
+    // Generate a random URL for the video
+    const randomUrl = `https://example.com/video/${Math.random().toString(36).substr(2, 9)}`
+    axios.post('http://localhost:8080/api/videos', { title, url: randomUrl })
       .then(response => {
         setVideos([...videos, response.data])
         setTitle('')
@@ -16,22 +19,17 @@ const VideoForm = ({ videos, setVideos }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <TextField
+        label="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
+        variant="outlined"
       />
-      <input
-        type="text"
-        placeholder="URL"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        required
-      />
-      <button type="submit">Add Video</button>
+      <Button type="submit" variant="contained" color="primary">
+        Add Video
+      </Button>
     </form>
   )
 }

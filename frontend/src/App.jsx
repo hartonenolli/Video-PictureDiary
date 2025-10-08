@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { fetchVideos } from './utils/Routes'
 import { Header } from './components/Header'
 import { RecordVideoContainer } from './components/RecordVideoContainer'
 import { VideoDiaryContainer } from './components/VideoDiaryContainer'
@@ -11,10 +11,11 @@ function App() {
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/videos')
-      .then(response => {
-        setVideos(response.data)
-      })
+    const fetchData = async () => {
+      const videos = await fetchVideos();
+      setVideos(videos);
+    };
+    fetchData();
   }, [])
 
   return (
