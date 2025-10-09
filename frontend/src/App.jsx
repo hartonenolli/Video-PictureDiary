@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchPictures } from './routes/Routes'
 import { Header } from './components/Header'
-import { RecordVideoContainer } from './components/RecordVideoContainer'
+import { AddPictureContainer } from './components/AddPictureContainer'
 import { PictureDiaryContainer } from './components/PictureDiaryContainer'
 import {
   Container
@@ -23,7 +23,7 @@ function App() {
     <div>
       <Header />
       <Container sx={{ pb: 4 }}>
-        <RecordVideoContainer pictures={pictures} setPictures={setPictures} />
+        <AddPictureContainer pictures={pictures} setPictures={setPictures} />
         <PictureDiaryContainer pictures={pictures} />
       </Container>
     </div>

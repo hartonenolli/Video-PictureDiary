@@ -1,8 +1,9 @@
-import VideoForm from "./VideoForm"
-import Camera from "../utils/Camera"
+import PictureForm from "./PictureForm"
+import CameraComponent from "./CameraComponent"
 import { AppBar, Typography, Card } from "../../node_modules/@mui/material"
 
-export const RecordVideoContainer = ({ pictures, setPictures }) => {
+export const AddPictureContainer = ({ pictures, setPictures }) => {
+
     return (
         <AppBar
             position='static'
@@ -27,13 +28,13 @@ export const RecordVideoContainer = ({ pictures, setPictures }) => {
                     justifyContent: 'center'
                 }}
             >
-                <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-                    <Camera />
-                </div>
-                Take a picture or upload an existing one to make a video diary entry!
+                <CameraComponent />
+                <Typography variant="body1" sx={{ m: 1 }}>
+                    Take a picture or upload an existing one to make a video diary entry!
+                </Typography>
             </Typography>
             <Card sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 2, width: '100%' }}>
-                <VideoForm pictures={pictures} setPictures={setPictures} />
+                <PictureForm pictures={pictures} setPictures={setPictures} />
             </Card>
         </AppBar>
     )

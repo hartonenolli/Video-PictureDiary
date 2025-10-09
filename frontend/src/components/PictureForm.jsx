@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { TextField, Button } from '../../node_modules/@mui/material'
 import axios from 'axios'
 
-const VideoForm = ({ pictures, setPictures }) => {
+const PictureForm = ({ pictures, setPictures }) => {
   const [title, setTitle] = useState('')
 
   const handleSubmit = (e) => {
@@ -31,4 +31,4 @@ const VideoForm = ({ pictures, setPictures }) => {
   )
 }
 
-export default VideoForm
+export default PictureForm
