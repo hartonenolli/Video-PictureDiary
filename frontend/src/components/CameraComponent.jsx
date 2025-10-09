@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react"
 const CameraComponent = () => {
   const videoRef = useRef(null)
   const [isCameraOpen, setIsCameraOpen] = useState(false)
+  const [snapshot, setSnapshot] = useState(null)
 
   const buttonStyle = {
     mt: 2,
@@ -20,25 +21,38 @@ const CameraComponent = () => {
     } else {
       camera.stopCamera(videoRef.current)
     }
-  }, [isCameraOpen])
+  }, [isCameraOpen, snapshot])
 
   const handleSnapshot = () => {
     const imgData = camera.takeSnapshot(videoRef.current)
     if (imgData) {
+      setSnapshot(imgData)
+      setIsCameraOpen(false)
+    }}
+
+  const handleRetake = () => {
+    setSnapshot(null)
+    setIsCameraOpen(true)
+  }
+
+  const handleSave = () => {
+    if (snapshot) {
       const link = document.createElement("a")
-      link.href = imgData
+      link.href = snapshot
       link.download = "snapshot.png"
       link.click()
     }
   }
 
-  return (
+return (
     <div style={{ textAlign: "center" }}>
-      {!isCameraOpen ? (
+      {!isCameraOpen && !snapshot && (
         <Button onClick={() => setIsCameraOpen(true)} variant="contained" sx={buttonStyle}>
           Open Camera
         </Button>
-      ) : (
+      )}
+
+      {isCameraOpen && (
         <>
           <video
             ref={videoRef}
@@ -47,15 +61,27 @@ const CameraComponent = () => {
             autoPlay
             style={{ border: "2px solid #333", background: "#000", display: "block", margin: "auto" }}
           />
-          <Button
-            onClick={() => setIsCameraOpen(false)}
-            variant="contained"
-            sx={buttonStyle}
-          >
-            Close Camera
-          </Button>
           <Button onClick={handleSnapshot} variant="contained" sx={buttonStyle}>
             Take Snapshot
+          </Button>
+          <Button onClick={() => setIsCameraOpen(false)} variant="contained" sx={buttonStyle}>
+            Close Camera
+          </Button>
+        </>
+      )}
+
+      {snapshot && (
+        <>
+          <img
+            src={snapshot}
+            alt="Snapshot"
+            style={{ border: "2px solid #333", display: "block", margin: "20px auto", width: 320, height: 240 }}
+          />
+          <Button onClick={handleRetake} variant="contained" sx={buttonStyle}>
+            Retake
+          </Button>
+          <Button onClick={handleSave} variant="contained" sx={buttonStyle}>
+            Save
           </Button>
         </>
       )}
