@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "videos")
-public class Video {
+@Table(name = "pictures")
+public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,9 +16,9 @@ public class Video {
     private String url;
 
     // Constructors
-    public Video() {
+    public Picture() {
     }
-    public Video(String title, String url) {
+    public Picture(String title, String url) {
         this.title = title;
         this.url = url;
     }

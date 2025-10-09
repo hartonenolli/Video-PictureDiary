@@ -1,6 +1,6 @@
 package com.example.videopicturediary.controller;
-import com.example.videopicturediary.model.Video;
-import com.example.videopicturediary.service.VideoService;
+import com.example.videopicturediary.model.Picture;
+import com.example.videopicturediary.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,25 +11,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class VideoController {
+public class PictureController {
 
     @Autowired
-    private VideoService videoService;
+    private PictureService pictureService;
 
     @Autowired
-    public VideoController(VideoService videoService) {
-        this.videoService = videoService;
+    public PictureController(PictureService pictureService) {
+        this.pictureService = pictureService;
     }
 
-    @GetMapping("/videos")
-    public List<Video> getAllVideos() {
-        return videoService.getAllVideos();
+    @GetMapping("/pictures")
+    public List<Picture> getAllPictures() {
+        return pictureService.getAllPictures();
     }
 
-    @PostMapping("/videos")
-    public Video createVideo(@RequestBody Video video) {
+    @PostMapping("/pictures")
+    public Picture addPicture(@RequestBody Picture picture) {
         // Placeholder implementation
-        return videoService.createVideo(video);
+        return pictureService.addPicture(picture);
     }
 
 }

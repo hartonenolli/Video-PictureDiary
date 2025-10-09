@@ -2,19 +2,16 @@ import { useState } from 'react'
 import { TextField, Button } from '../../node_modules/@mui/material'
 import axios from 'axios'
 
-const VideoForm = ({ videos, setVideos }) => {
+const VideoForm = ({ pictures, setPictures }) => {
   const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Generate a random URL for the video
-    const randomUrl = `https://example.com/video/${Math.random().toString(36).substr(2, 9)}`
-    axios.post('http://localhost:8080/api/videos', { title, url: randomUrl })
+    const randomUrl = `https://example.com/picture/${Math.random().toString(36).substr(2, 9)}`
+    axios.post('http://localhost:8080/api/pictures', { title, url: randomUrl })
       .then(response => {
-        setVideos([...videos, response.data])
+        setPictures([...pictures, response.data])
         setTitle('')
-        setUrl('')
       })
   }
 
@@ -28,7 +25,7 @@ const VideoForm = ({ videos, setVideos }) => {
         variant="outlined"
       />
       <Button type="submit" variant="contained" color="primary">
-        Add Video
+        Add Picture
       </Button>
     </form>
   )

@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
-import { fetchVideos } from './utils/Routes'
+import { fetchPictures } from './routes/Routes'
 import { Header } from './components/Header'
 import { RecordVideoContainer } from './components/RecordVideoContainer'
-import { VideoDiaryContainer } from './components/VideoDiaryContainer'
+import { PictureDiaryContainer } from './components/PictureDiaryContainer'
 import {
   Container
 } from '../node_modules/@mui/material'
 
 function App() {
-  const [videos, setVideos] = useState([])
+  const [pictures, setPictures] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      const videos = await fetchVideos();
-      setVideos(videos);
+      const pictures = await fetchPictures();
+      setPictures(pictures);
+      console.log('Fetched pictures:', pictures);
     };
     fetchData();
   }, [])
@@ -22,8 +23,8 @@ function App() {
     <div>
       <Header />
       <Container sx={{ pb: 4 }}>
-        <RecordVideoContainer videos={videos} setVideos={setVideos} />
-        <VideoDiaryContainer videos={videos} />
+        <RecordVideoContainer pictures={pictures} setPictures={setPictures} />
+        <PictureDiaryContainer pictures={pictures} />
       </Container>
     </div>
   )
