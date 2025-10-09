@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { TextField, Button } from '../../node_modules/@mui/material'
-import axios from 'axios'
+import { useState } from "react"
+import { TextField, Button } from "@mui/material"
+import axios from "axios"
 
-const PictureForm = ({ pictures, setPictures }) => {
-  const [title, setTitle] = useState('')
-
+const PictureForm = ({ pictures, setPictures, snapshot, setSnapshot }) => {
+  const [title, setTitle] = useState("")
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     const randomUrl = `https://example.com/picture/${Math.random().toString(36).substr(2, 9)}`
@@ -12,11 +12,12 @@ const PictureForm = ({ pictures, setPictures }) => {
       .then(response => {
         setPictures([...pictures, response.data])
         setTitle('')
+        setSnapshot(null)
       })
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <TextField
         label="Title"
         value={title}
@@ -25,7 +26,7 @@ const PictureForm = ({ pictures, setPictures }) => {
         variant="outlined"
       />
       <Button type="submit" variant="contained" color="primary">
-        Add Picture
+        {snapshot ? "Save Snapshot" : "Download Picture"}
       </Button>
     </form>
   )

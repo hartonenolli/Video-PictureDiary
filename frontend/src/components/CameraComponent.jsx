@@ -2,17 +2,16 @@ import camera from "../utils/camera"
 import { Button } from "@mui/material"
 import { useRef, useEffect, useState } from "react"
 
-const CameraComponent = () => {
+const CameraComponent = ({ snapshot, setSnapshot }) => {
   const videoRef = useRef(null)
   const [isCameraOpen, setIsCameraOpen] = useState(false)
-  const [snapshot, setSnapshot] = useState(null)
 
   const buttonStyle = {
     mt: 2,
     mb: 2,
     bgcolor: "purple",
     color: "black",
-    "&:hover": { bgcolor: "#FFD700" }
+    "&:hover": { bgcolor: "#FFD700" },
   }
 
   useEffect(() => {
@@ -21,30 +20,27 @@ const CameraComponent = () => {
     } else {
       camera.stopCamera(videoRef.current)
     }
-  }, [isCameraOpen, snapshot])
+  }, [isCameraOpen])
 
   const handleSnapshot = () => {
     const imgData = camera.takeSnapshot(videoRef.current)
     if (imgData) {
       setSnapshot(imgData)
       setIsCameraOpen(false)
-    }}
+    }
+  }
 
   const handleRetake = () => {
     setSnapshot(null)
     setIsCameraOpen(true)
   }
 
-  const handleSave = () => {
-    if (snapshot) {
-      const link = document.createElement("a")
-      link.href = snapshot
-      link.download = "snapshot.png"
-      link.click()
-    }
+  const handleClose = () => {
+    setSnapshot(null)
+    setIsCameraOpen(false)
   }
 
-return (
+  return (
     <div style={{ textAlign: "center" }}>
       {!isCameraOpen && !snapshot && (
         <Button onClick={() => setIsCameraOpen(true)} variant="contained" sx={buttonStyle}>
@@ -71,17 +67,19 @@ return (
       )}
 
       {snapshot && (
+        <img
+          src={snapshot}
+          alt="Snapshot"
+          style={{ border: "2px solid #333", display: "block", margin: "20px auto", width: 320, height: 240 }}
+        />
+      )}
+      {snapshot && (
         <>
-          <img
-            src={snapshot}
-            alt="Snapshot"
-            style={{ border: "2px solid #333", display: "block", margin: "20px auto", width: 320, height: 240 }}
-          />
           <Button onClick={handleRetake} variant="contained" sx={buttonStyle}>
             Retake
           </Button>
-          <Button onClick={handleSave} variant="contained" sx={buttonStyle}>
-            Save
+          <Button onClick={handleClose} variant="contained" sx={buttonStyle}>
+            Remove Snapshot
           </Button>
         </>
       )}
