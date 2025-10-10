@@ -55,7 +55,7 @@ const CameraComponent = ({ snapshot, setSnapshot }) => {
             width={320}
             height={240}
             autoPlay
-            style={{ border: "2px solid #333", background: "#000", display: "block", margin: "auto" }}
+            style={{ border: "2px solid #333", background: "#000", display: "block", margin: "auto", marginTop: "16px", marginBottom: "16px" }}
           />
           <Button onClick={handleSnapshot} variant="contained" sx={buttonStyle}>
             Take Snapshot
