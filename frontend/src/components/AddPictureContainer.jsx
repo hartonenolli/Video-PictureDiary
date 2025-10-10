@@ -30,14 +30,7 @@ export const AddPictureContainer = ({ pictures, setPictures }) => {
           justifyContent: "center",
         }}
       >
-        <CameraComponent snapshot={snapshot} setSnapshot={setSnapshot} />
-
-        <Typography variant="body1" sx={{ m: 1 }}>
-          Take a picture or upload an existing one to make a video diary entry!
-        </Typography>
-      </Typography>
-
-      <Card sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 2, width: "100%" }}>
+      <Card sx={{ display: "flex", justifyContent: "center", alignItems: "center", p: 2, width: "100%", marginTop: 2, marginBottom: 2 }}>
         <PictureForm
           pictures={pictures}
           setPictures={setPictures}
@@ -45,6 +38,13 @@ export const AddPictureContainer = ({ pictures, setPictures }) => {
           setSnapshot={setSnapshot}
         />
       </Card>
+        {/* <CameraComponent snapshot={snapshot} setSnapshot={setSnapshot} /> */}
+
+        <Typography variant="body1" sx={{ m: 1 }}>
+          Take a picture or upload an existing one to make a video diary entry!
+        </Typography>
+      </Typography>
+
     </AppBar>
   )
 }

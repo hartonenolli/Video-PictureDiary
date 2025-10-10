@@ -9,8 +9,10 @@ const CameraComponent = ({ snapshot, setSnapshot }) => {
   const buttonStyle = {
     mt: 2,
     mb: 2,
+    mr: 1,
+    ml: 1,
     bgcolor: "purple",
-    color: "black",
+    color: "white",
     "&:hover": { bgcolor: "#FFD700" },
   }
 
