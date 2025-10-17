@@ -28,27 +28,27 @@
 
 ### Front page
 
-![Front page]()
+![Front page](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Frontpage.png)
 
 ### Taking a picture
 
-![Take a picture]()
+![Take a picture](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Opencamera.png)
 
 ### Picture taken
 
-![Picture taken]()
+![Picture taken](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Takeapicture.png)
 
 ### Picture added
 
-![Picture added]()
+![Picture added](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Addapicture.png)
 
 ### Uploading a picture
 
-![Upload a picture]()
+![Upload a picture](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Uploadapicture.png)
 
 ### Choose a file
 
-![Choosing a file]()
+![Choosing a file](https://github.com/hartonenolli/Video-PictureDiary/blob/main/pictures/Chooseafile.png)
 
 ## Thoughts and what I learned
 
