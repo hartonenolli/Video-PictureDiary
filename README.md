@@ -11,6 +11,8 @@ Video-Picture Diary is a simple app for creating short, personalized videos from
 
 ## <a id="project"></a>Project presentation
 
+[Version 1, 17.10.2025](https://github.com/hartonenolli/Video-PictureDiary/blob/main/diary/version1.md)
+
 ## <a id="introduction"></a>Introduction
 ### Textual information model
 
